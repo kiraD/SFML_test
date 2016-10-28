@@ -1,0 +1,26 @@
+
+
+CPP = g++
+CPPFLAGS = -Wall -g -std=c++11
+
+sfml-app: Texte.o Grid.o Playable.o Keypush.o Character.o Interface.o
+	$(CPP) $(CPPFLAGS) -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system Texte.o Grid.o Playable.o Keypush.o Character.o Interface.o
+
+texte.o: Texte.h Texte.cpp
+	$(CPP) $(CPPFLAGS) -c Texte.cpp
+
+Grid.o: Grid.h Texte.h Grid.cpp
+	$(CPP) $(CPPFLAGS) -c Grid.cpp
+
+Playable.o: Playable.h Interface.h Texte.h Grid.h Keypush.h Character.h Playable.cpp
+	$(CPP) $(CPPFLAGS) -c Playable.cpp
+
+Keypush.o: Keypush.h Character.h Grid.h Keypush.cpp
+	$(CPP) $(CPPFLAGS) -c Keypush.cpp
+
+Character.o: Character.h Grid.h Character.cpp
+	$(CPP) $(CPPFLAGS) -c Character.cpp
+
+Interface.o: Interface.h Texte.h Playable.h Interface.cpp
+	$(CPP) $(CPPFLAGS) -c Interface.cpp
+
